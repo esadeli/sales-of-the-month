@@ -1,7 +1,8 @@
 'use strict'
 
 const Models = require('../models');
-const Salesman = Models.Salesman
+const Salesman = Models.Salesman;
+const SalesProduct = Models.SalesProduct;
 
 class SalesController {
 
@@ -36,12 +37,16 @@ class SalesController {
 
     static deleteSales(req,res,deleteId){
         let inputDeleteId = deleteId;
-        Salesman.destroy({where : {id : inputDeleteId}})
+
+        SalesProduct.destroy({where : {salesId : inputDeleteId}})
             .then(row =>{
-                // res.redirect(......)
-            })  
+                Salesman.destroy({where : {id : inputDeleteId}})
+                .then(row =>{
+                    // res.redirect(......)
+                })  
+            })
             .catch(err =>{
-                // res.send(err)
+                    // res.send(err)
             })
     }
 
