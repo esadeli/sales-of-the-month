@@ -1,0 +1,54 @@
+#start-btn {
+  color:white;
+  padding: 1em;
+  font-size: 1.5em;
+  background-color: #007bff;
+}
+
+#start-btn:hover {
+  color: #007bff;
+  background-color: #ffffff;
+}
+
+#star {
+  margin: 70px auto;
+  margin-bottom: 40px;
+  display: block;
+  font-size: 7em;
+  text-align: center;
+  color: #fdcb6e;
+}
+
+#rank-1 {
+  font-size: 2em;
+}
+
+#rank-2 {
+  font-size: 1.5em;
+}
+
+#rank-3 {
+  font-size: 0.9em;
+}
+
+#rank-2, #rank-3 {
+  color: #595959;
+}
+
+#footer {
+  width: 600px;
+  position: fixed;
+  left: 50%;
+  margin-left: -300px;
+  bottom: 10px;
+}
+
+.jumbotron {
+  padding: 8rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px #cccccc;
+}
+
+.table {
+  box-shadow: 0 0 3px #cccccc;
+}

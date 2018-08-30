@@ -2,13 +2,18 @@
 
 const express = require('express');
 const router = express.Router();
+const ProductController = require('../controllers/ProductController');
 
-
-router.get('/',(req,res)=>{
-
+router.get('/', ProductController.findAllProduct);
     //-------> siapkan view untuk list product
-    res.send('OK')
-})
+    // res.send('OK'))
+
+// router.get('/',(req,res)=>{
+
+//     ProductController.findAllProduct(req, res);
+//     //-------> siapkan view untuk list product
+//     // res.send('OK')
+// })
 
 router.post('/',(req,res)=>{
     //--------> siapkan form di tempat list product untuk tambah data product

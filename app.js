@@ -10,6 +10,7 @@ const ProductRouters = require('./routers/ProductRouters');
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(express.static('assets'));
 
 app.use('/sales',SalesRouters);
 app.use('/products',ProductRouters);
@@ -17,7 +18,8 @@ app.use('/products',ProductRouters);
 
 app.get('/',(req,res)=>{
     //-------> siapkan index.ejs
-    res.send('OK')
+    // res.send('OK')
+    res.render('index');
 })
 
 app.listen(3000, ()=>{

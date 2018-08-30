@@ -58,7 +58,7 @@ function ConvertDateHelper(str){
      
     }
 
-    return birthdate[0]+' 'birthdate[1]+' 'birthdate[2];
+    return `${birthdate[0]} ${birthdate[1]} ${birthdate[2]}`;
 }
 
 module.exports = ConvertDateHelper

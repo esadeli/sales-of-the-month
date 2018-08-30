@@ -13,17 +13,17 @@ module.exports = {
       }], {});
     */
      return queryInterface.bulkInsert('Products',[
-       { name: 'Sabun Cair Sayap',
+       { productName: 'Sabun Cair Sayap',
          price: 20000,
          createdAt : new Date(),
          updatedAt : new Date()
         },
-        { name: 'Odol Pepsodent',
+        { productName: 'Odol Pepsodent',
          price: 8000,
          createdAt : new Date(),
          updatedAt : new Date()
         },
-        { name: 'Mie Indonesia',
+        { productName: 'Mie Indonesia',
          price: 2000,
          createdAt : new Date(),
          updatedAt : new Date()

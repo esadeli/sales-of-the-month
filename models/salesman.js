@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   const ConvertDateHelper = require('../helpers/ConvertDateHelper')
 
   const Salesman = sequelize.define('Salesman', {
-    name: DataTypes.STRING,
+    salesName: DataTypes.STRING,
     birthday: {
       type : DataTypes.STRING, 
       validate :{
@@ -66,7 +66,7 @@ module.exports = (sequelize, DataTypes) => {
   }});
   Salesman.associate = function(models) {
     // associations can be defined here
-    Salesman.belongsToMany(models.Product,{through : models.SalesProduct, foreingKey : 'salesId'})
+    Salesman.belongsToMany(models.Product,{through : models.SalesProduct, foreignKey : 'salesId'})
   };
   return Salesman;
 };

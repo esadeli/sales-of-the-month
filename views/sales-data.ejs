@@ -1,0 +1,65 @@
+<%- include('./header') -%>
+  
+<div class="container" style="margin-top: 40px">
+  <h2 style="margin-top: 100px">Sales Data</h2>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add Sales
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/sales/add" method="POST">
+
+          <div class="modal-header">
+            Add Sales Data
+          </div>
+          <div class="modal-body">
+            <p><strong>Sales Name</strong></p>
+            <p><input type="text" name="salesName" class="form-control" placeholder="Enter a sales name"></p>
+    
+            <p><strong>Email</strong></p>
+            <p><input type="text" name="email" class="form-control" placeholder="Enter sales email"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add Sales</button>
+          </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  <!-- SHOW DATA HERE -->
+  <div class="row" style="margin-top: 20px">
+    <div class="col-lg-12">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <th>No.</th>
+          <th>Sales Name</th>
+          <th>Email</th>
+          <th style="width: 15%"></th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Ivan</td>
+            <td>ivansu.webmail@gmail.com</td>
+            <td>
+              <a href="/sales/edit/" class="btn btn-info"><span class="fa fa-edit"></span></a>
+              <a href="/sales/delete/" class="btn btn-danger"><span class="fa fa-trash"></span></a>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Efrat</td>
+            <td>efrat@gmail.com</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('./footer') -%>
