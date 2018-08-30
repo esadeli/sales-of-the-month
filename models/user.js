@@ -2,8 +2,23 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING
+    password: { 
+      type :DataTypes.STRING,
+      validate : {
+        len :{
+          args : [6,100],
+          msg : 'Password harus minimal 6 karakter'
+        },
+        isAlphanumeric : {
+          arg : true,
+          msg : 'Password harus alphanumerik'
+        } 
+      }
+    },
+    role: {
+      type : DataTypes.STRING,
+      defaultValue : 'Admin'
+     }
   }, {});
   User.associate = function(models) {
     // associations can be defined here
