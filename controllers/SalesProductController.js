@@ -8,6 +8,8 @@ const dateFormat = require('../helpers/dateFormat');
 
 class SalesProductController {
     
+    static insertSalesProduct(req,res,objCreate){
+        let obj = objCreate
     static viewSalesOfTheMonth(req, res) {
         SalesProduct.findAll()
         .then(results => {

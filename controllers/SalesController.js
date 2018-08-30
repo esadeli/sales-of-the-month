@@ -1,11 +1,13 @@
 'use strict'
 
 const Models = require('../models');
-const Salesman = Models.Salesman
+const Salesman = Models.Salesman;
+const SalesProduct = Models.SalesProduct;
 
 class SalesController {
 
     static insertSales(req,res,objCreate){
+
         let obj = objCreate;
         Salesman.create({salesName : obj['salesName'], birthday : obj['birthday'],
                        email : obj['email']  })
@@ -38,8 +40,16 @@ class SalesController {
 
     static deleteSales(req,res,deleteId){
         let inputDeleteId = deleteId;
-        Salesman.destroy({where : {id : inputDeleteId}})
+
+        SalesProduct.destroy({where : {salesId : inputDeleteId}})
             .then(row =>{
+                Salesman.destroy({where : {id : inputDeleteId}})
+                .then(row =>{
+                    // res.redirect(......)
+                })  
+            })
+            .catch(err =>{
+                    // res.send(err)
                 res.redirect('/sales');
             })  
             .catch(err =>{
@@ -75,6 +85,6 @@ class SalesController {
 
 }
 
-console.log(SalesController.findAllSales())
+// console.log(SalesController.findAllSales())
 
 module.exports = SalesController
