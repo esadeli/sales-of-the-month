@@ -1,0 +1,57 @@
+<%- include('./header') -%>
+
+<form action="/dashboard/transaction" method="POST">
+<div class="container" style="padding-top: 120px; max-width: 1000px">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <h2 class="text-center" style="padding-bottom: 50px">Order products you want</h2>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <select name="productData" class="form-control">
+        <% products.forEach(product => { %>
+        <option value="<%= `${product.id}|${product.price}` %>"><%= product.productName %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="col-lg-3">
+      <select name="salesId" class="form-control">
+          <% sales.forEach(people => { %>
+            <option value="<%= people.id %>"><%= people.salesName %></option>
+            <% }) %>
+      </select>
+    </div>
+    <div class="col-lg-3">
+      <input type="number" class="form-control" name="quantity" placeholder="Quantity you want">
+    </div>
+    <div class="col-lg-3">
+      <button type="submit" class="btn btn-primary btn-block">Order</button>
+    </div>
+  </div>
+</div>
+</form>
+
+<div class="container" style="margin-top: 80px">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="text-center">Order History</h2>
+      <table class="table table-striped" style="margin-top: 30px">
+        <thead class="thead-dark">
+          <th>Product Name</th>
+          <th>Sales Name</th>
+          <th>Qty</th>
+        </thead>
+        <tbody>
+          <% salesProducts.forEach(salesProduct => { %>
+          <tr>
+            <td><%= salesProduct.Product.productName %></td>
+            <td><%= salesProduct.Salesman.salesName %></td>
+            <td><%= salesProduct.quantity %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include('./footer') -%>

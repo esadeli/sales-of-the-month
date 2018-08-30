@@ -2,33 +2,43 @@
 
 const express = require('express');
 const router = express.Router();
-const ProductController = require('../controllers/ProductController')
+const ProductController = require('../controllers/ProductController');
 
-router.get('/',(req,res)=>{
-
-    //-------> siapkan view untuk list product
-    // res.send('OK')
-    ProductController.findAllProduct(req,res)
+router.get('/', (req, res) => {
+    ProductController.findAllProduct(req,res);
 })
 
 router.post('/',(req,res)=>{
     //--------> siapkan form di tempat list product untuk tambah data product
-    res.send('ok')
+    // res.send('ok')
+    // res.send(req.body);
+    ProductController.insertProduct(req, res, {
+        productName: req.body.productName,
+        price: req.body.price
+    });
 })
 
 router.get('/edit/:id',(req,res)=>{
     //----------> siapkan form terpisah untuk edit data
-    res.send('ok')
+    let id = req.params.id;
+    ProductController.findByIdProduct(req, res, id);
 })
 
 router.post('/edit/:id',(req,res)=>{
     //------------> siapkan form terpisah untuk edit data
-    res.send('ok')
+    // res.send([req.params.id, req.body]);
+    let obj = {
+        productName: req.body.productName,
+        price: req.body.price
+    }
+    ProductController.updateProduct(req, res, obj, parseInt(req.params.id));
 })
 
 router.get('/delete/:id',(req,res)=>{
     //----------> siapkan form terpisah untuk delete data
-    res.send('ok')
+    let id = parseInt(req.params.id);
+    ProductController.deleteProduct(req, res, id);
+    // res.send();
 })
 
 module.exports = router;

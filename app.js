@@ -7,13 +7,19 @@ var session = require('express-session');
 
 const SalesRouters = require('./routers/SalesRouters');
 const ProductRouters = require('./routers/ProductRouters');
+const SalesProductRouters = require('./routers/SalesProductRouters');
+
 const UserController = require('./controllers/UserController');
 const IsLogin = require('./helpers/IsLogin');
 
 app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(express.static('assets'));
 
+app.use('/sales',SalesRouters);
+app.use('/products',ProductRouters);
+app.use('/dashboard', SalesProductRouters);
 
 app.use('/sales', IsLogin, SalesRouters);
 app.use('/products',IsLogin,ProductRouters);
@@ -25,7 +31,8 @@ app.use(session({
 
 app.get('/',(req,res)=>{
     //-------> siapkan index.ejs
-    res.send('OK')
+    // res.send('OK')
+    res.render('index');
 })
 
 app.get('/register',(req,res)=>{

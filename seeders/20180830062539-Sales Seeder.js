@@ -14,14 +14,14 @@ module.exports = {
     */
       return queryInterface.bulkInsert('Salesmans',[
         {
-          name : 'Bambang Suharja',
+          salesName : 'Bambang Suharja',
           birthday: '1994-04-03',
           email: 'bambsuharja@sales.com',
           createdAt : new Date(),
           updatedAt : new Date()
         },
         {
-          name : 'Agung Nugroho',
+          salesName : 'Agung Nugroho',
           birthday: '1987-06-03',
           email: 'agungnugroho@sales.com',
           createdAt : new Date(),

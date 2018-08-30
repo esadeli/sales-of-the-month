@@ -7,14 +7,17 @@ const SalesProduct = Models.SalesProduct;
 class SalesController {
 
     static insertSales(req,res,objCreate){
-        let obj = objCreate
+
+        let obj = objCreate;
         Salesman.create({salesName : obj['salesName'], birthday : obj['birthday'],
                        email : obj['email']  })
                 .then(row =>{
-                    // res.render(......)
+                    res.redirect('/sales');
                 })  
                 .catch(err =>{
-                    // res.render(err)
+                    // res.send(`ERROR ${err}`);
+                    // res.send(err);
+                    res.render('errors', {errors: err.errors});
                 })
                 
     }
@@ -27,10 +30,10 @@ class SalesController {
                     email : obj['email'], updatedAt : new Date()},{where : {id : inputChangeId}})
 
                 .then(row =>{
-                    // res.render(......)
+                    res.redirect('/sales');
                 })  
                 .catch(err =>{
-                    // res.render(err)
+                    res.render('errors', {errors: err.errors});
                 })
 
     }
@@ -47,18 +50,23 @@ class SalesController {
             })
             .catch(err =>{
                     // res.send(err)
+                res.redirect('/sales');
+            })  
+            .catch(err =>{
+                res.render('error', {error: err});
             })
     }
 
     static findAllSales(req,res){
+        console.log('MASUkkkkk')
         Salesman.findAll( { order : [['id','DESC']]})
             .then(rows =>{
-                // res.render(......)
+                res.render('sales-data', {salesData: rows});
                 // console.log(rows)
-                res.send(rows)
+                // res.send(rows)
             })  
             .catch(err =>{
-                // res.send(err)
+                res.render('error', {error: err});
             })
     }
 
@@ -68,15 +76,15 @@ class SalesController {
 
         Salesman.findById(inputSearchId)
                 .then(row =>{
-                    // res.render(......)
+                    res.render('sales-edit', {sales: row});
                 })  
                 .catch(err =>{
-                    // res.send(err)
+                    res.render('error', {error: err});
                 })
     }
 
 }
 
-console.log(SalesController.findAllSales())
+// console.log(SalesController.findAllSales())
 
 module.exports = SalesController
