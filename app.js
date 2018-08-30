@@ -15,7 +15,7 @@ app.use(express.static('assets'));
 
 app.use('/sales',SalesRouters);
 app.use('/products',ProductRouters);
-app.use('/client', SalesProductRouters);
+app.use('/dashboard', SalesProductRouters);
 
 
 app.get('/',(req,res)=>{
