@@ -5,7 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     productId: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER,
     amount: DataTypes.INTEGER
-  }, {});
+
+  }, { hooks : {
+    beforeCreate : ()=>{
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
+}});
   SalesProduct.associate = function(models) {
     // associations can be defined here
   };

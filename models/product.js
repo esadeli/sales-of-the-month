@@ -11,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, { hooks : {
+        beforeCreate : ()=>{
+            this.createdAt = new Date();
+            this.updatedAt = new Date();
+        }
+  }});
   Product.associate = function(models) {
     // associations can be defined here
     Product.belongsToMany(models.Salesman,{through : models.SalesProducts, foreignKey : 'productId'})

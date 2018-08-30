@@ -60,6 +60,8 @@ module.exports = (sequelize, DataTypes) => {
   }, { hooks :{
         beforeCreate : () => {
             this.birthday = ConvertDateHelper(this.birthday);
+            this.createdAt = new Date();
+            this.updatedAt = new Date();
         }
   }});
   Salesman.associate = function(models) {

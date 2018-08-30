@@ -19,7 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       type : DataTypes.STRING,
       defaultValue : 'Admin'
      }
-  }, {});
+  }, { hooks : {
+    beforeCreate : ()=>{
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
+}});
   User.associate = function(models) {
     // associations can be defined here
   };
