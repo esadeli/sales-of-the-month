@@ -3,11 +3,13 @@
 const express = require('express');
 const router = express.Router();
 
+const SalesController = require('../controllers/SalesController')
 
 router.get('/',(req,res)=>{
 
+    SalesController.findAllSales(req,res)
     //-------> siapkan view untuk list salesman
-    res.send('OK')
+    // res.send('OK')
 })
 
 router.post('/',(req,res)=>{

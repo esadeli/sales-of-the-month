@@ -45,11 +45,11 @@ class ProductController{
         // }
 
         static findAllProduct(req,res){
-            Product.findAll({
-                order : ['id','DESC']
-            })
+            Product.findAll({order : [['id','DESC']]})
                 .then(rows =>{
-                    res.send(rows);
+                    // res.render(......)
+                    res.send(rows)
+                    // console.log(rows)
                     // res.render('products-data', {rows});
                 })  
                 .catch(err =>{
@@ -70,5 +70,7 @@ class ProductController{
         //             })
         // }
 }
+
+// console.log(ProductController.findAllProduct())
 
 module.exports = ProductController
