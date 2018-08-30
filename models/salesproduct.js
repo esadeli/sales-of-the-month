@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     }
 }});
   SalesProduct.associate = function(models) {
-    SalesProduct.belongsTo(models.Product, {foreignKey: 'productId'});
-    SalesProduct.belongsTo(models.Sales, {foreignKey: 'salesId'});
+    // SalesProduct.belongsTo(models.Product, {foreignKey: 'productId'});
+    // SalesProduct.belongsTo(models.Sales, {foreignKey: 'salesId'});
   };
   return SalesProduct;
 };

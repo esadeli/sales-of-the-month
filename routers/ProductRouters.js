@@ -2,16 +2,20 @@
 
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
 const ProductController = require('../controllers/ProductController');
 
 router.get('/', (req, res) => {
-    ProductController.findAllProduct(req,res)
+    ProductController.findAllProduct(req,res);
 })
 
 router.post('/',(req,res)=>{
     //--------> siapkan form di tempat list product untuk tambah data product
-    res.send('ok')
+    // res.send('ok')
+    // res.send(req.body);
+    ProductController.insertProduct(req, res, {
+        productName: req.body.productName,
+        price: req.body.price
+    });
 })
 
 router.get('/edit/:id',(req,res)=>{

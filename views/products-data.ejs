@@ -9,7 +9,7 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form action="/products/add" method="POST">
+          <form action="/products" method="POST">
 
           <div class="modal-header">
             Add Products Data
@@ -23,7 +23,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Add Product</button>
           </div>
 
           </form>
@@ -49,8 +49,8 @@
             <td><%= row.productName %></td>
             <td><%= row.price %></td>
             <td>
-              <a href="/products/edit/" class="btn btn-info"><span class="fa fa-edit"></span></a>
-              <a href="/products/delete/" class="btn btn-danger"><span class="fa fa-trash"></span></a>
+              <a href="/products/edit/<%= row.id %>" class="btn btn-info"><span class="fa fa-edit"></span></a>
+              <a href="/products/delete/<%= row.id %>" class="btn btn-danger"><span class="fa fa-trash"></span></a>
             </td>
           </tr>
           <% }) %>
