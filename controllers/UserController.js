@@ -25,6 +25,15 @@ class UserController {
 
         User.findOne({where : { username : obj['username'], password : hashPassword}})
                 .then(row =>{
+                    if (row) {
+                         req.session.admin = {
+                            name : req.body.username,
+                            password : req.body.password
+                        }
+                        res.redirect('/dashboard')
+                    } else {
+                        // send Error
+                    }
                     // res.render(......)
                 })  
                 .catch(err =>{
