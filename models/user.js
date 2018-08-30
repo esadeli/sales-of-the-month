@@ -1,5 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
+  const HashPassword = require('../helpers/HashPassword');
+
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
     password: { 
@@ -21,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
      }
   }, { hooks : {
     beforeCreate : ()=>{
+        this.password = HashPassword(this.password);
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }

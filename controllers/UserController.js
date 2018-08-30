@@ -2,6 +2,7 @@
 
 const Models = require('../models')
 const User = Models.User
+const HashPassword = require('../helpers/HashPassword');
 
 class UserController {
 
@@ -20,8 +21,9 @@ class UserController {
     static findOneUser(req,res,searchParam){
 
         let obj = searchParam;
+        let hashPassword = HashPassword(obj['password'])
 
-        User.findOne({where : { username : searchParam['username'], password : searchParam['password']}})
+        User.findOne({where : { username : obj['username'], password : hashPassword}})
                 .then(row =>{
                     // res.render(......)
                 })  
