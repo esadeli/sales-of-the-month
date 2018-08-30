@@ -13,9 +13,9 @@ class SalesController {
                     res.redirect('/sales');
                 })  
                 .catch(err =>{
-                    res.send(`ERROR ${err}`);
-                    res.send(err);
-                    // res.render('errors', {errors: err.errors});
+                    // res.send(`ERROR ${err}`);
+                    // res.send(err);
+                    res.render('errors', {errors: err.errors});
                 })
                 
     }
@@ -48,6 +48,7 @@ class SalesController {
     }
 
     static findAllSales(req,res){
+        console.log('MASUkkkkk')
         Salesman.findAll( { order : [['id','DESC']]})
             .then(rows =>{
                 res.render('sales-data', {salesData: rows});

@@ -6,7 +6,6 @@ const router = express.Router();
 const SalesController = require('../controllers/SalesController')
 
 router.get('/',(req,res)=>{
-
     SalesController.findAllSales(req,res);
     //-------> siapkan view untuk list salesman
     // res.send('OK')

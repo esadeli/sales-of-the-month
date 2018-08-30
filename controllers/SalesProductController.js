@@ -4,9 +4,24 @@ const Models = require('../models');
 const Salesman = Models.Salesman
 const Product = Models.Product;
 const SalesProduct = Models.SalesProduct;
+const dateFormat = require('../helpers/dateFormat');
 
 class SalesProductController {
     
+    static viewSalesOfTheMonth(req, res) {
+        SalesProduct.findAll()
+        .then(results => {
+            results.forEach(element => {
+                
+            });
+        })
+        .catch(err => {
+            res.send(err);
+        });
+        
+        // res.render('sales-of-the-month', {dateFormat});
+    }
+
     static viewAddTransaction(req, res) {
         Product.findAll()
         .then(products => {

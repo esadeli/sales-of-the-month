@@ -36,11 +36,7 @@
 }
 
 #footer {
-  width: 600px;
-  position: fixed;
-  left: 50%;
-  margin-left: -300px;
-  bottom: 10px;
+  padding-top: 100px;
 }
 
 .jumbotron {
