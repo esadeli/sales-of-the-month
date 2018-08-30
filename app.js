@@ -51,7 +51,7 @@ app.post('/login',(req,res)=>{
     //res.send(req.session.admin)
 })
 
-app.get('/dashboard',isLogin,(req,res,next)=>{
+app.get('/dashboard',IsLogin,(req,res,next)=>{
     res.send(`aman`);
 })
 
