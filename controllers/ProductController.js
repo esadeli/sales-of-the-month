@@ -7,12 +7,14 @@ class ProductController{
 
         static insertProduct(req,res,objCreate){
             let obj = objCreate
-            Product.insert({productName : obj['productName'], price : obj['price'] })
+            Product.create({productName : obj['productName'], price : obj['price'] })
                     .then(row =>{
                         // res.render(......)
+                        res.redirect('/products');
                     })  
                     .catch(err =>{
                         // res.render(err)
+                        res.render('error', {error: err});
                     })
                     
         }
@@ -25,10 +27,10 @@ class ProductController{
                                 ,{where : {id : inputChangeId}})
 
                     .then(row =>{
-                        // res.render(......)
+                        res.redirect('/products');
                     })  
                     .catch(err =>{
-                        // res.render(err)
+                        res.render('error', {error: err});
                     })
 
         }
@@ -38,9 +40,11 @@ class ProductController{
             Product.destroy({where : {id : inputDeleteId}})
                 .then(row =>{
                     // res.redirect(......)
+                    res.redirect('/products');
                 })  
                 .catch(err =>{
                     // res.send(err)
+                    res.render('error', {error: err});
                 })
         }
 
@@ -48,8 +52,8 @@ class ProductController{
             Product.findAll({order : [['id','DESC']]})
                 .then(rows =>{
                     // res.render(......)
-                    res.send(rows)
-                    // console.log(rows)
+                    // res.send(rows)
+                    res.render('products-data', {rows});
                 })  
                 .catch(err =>{
                     res.send(err)
@@ -57,12 +61,12 @@ class ProductController{
         }
 
         static findByIdProduct(req,res,searchId){
-
             let inputSearchId = searchId;
 
             Product.findById(inputSearchId)
                     .then(row =>{
-                        // res.render(......)
+                        res.render('products-edit', {product: row});
+                        // res.send(row);
                     })  
                     .catch(err =>{
                         // res.send(err)
