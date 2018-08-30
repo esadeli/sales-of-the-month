@@ -27,24 +27,26 @@ class ProductController{
                                 ,{where : {id : inputChangeId}})
 
                     .then(row =>{
-                        // res.render(......)
+                        res.redirect('/products');
                     })  
                     .catch(err =>{
-                        // res.render(err)
+                        res.render('error', {error: err});
                     })
 
         }
 
-        // static deleteProduct(req,res,deleteId){
-        //     let inputDeleteId = deleteId;
-        //     Product.destroy({where : {id : inputDeleteId}})
-        //         .then(row =>{
-        //             // res.redirect(......)
-        //         })  
-        //         .catch(err =>{
-        //             // res.send(err)
-        //         })
-        // }
+        static deleteProduct(req,res,deleteId){
+            let inputDeleteId = deleteId;
+            Product.destroy({where : {id : inputDeleteId}})
+                .then(row =>{
+                    // res.redirect(......)
+                    res.redirect('/products');
+                })  
+                .catch(err =>{
+                    // res.send(err)
+                    res.render('error', {error: err});
+                })
+        }
 
         static findAllProduct(req,res){
             Product.findAll({order : [['id','DESC']]})
@@ -58,18 +60,18 @@ class ProductController{
                 })
         }
 
-        // static findByIdProduct(req,res,searchId){
-        //     name
-        //     let inputSearchId = searchId;
+        static findByIdProduct(req,res,searchId){
+            let inputSearchId = searchId;
 
-        //     Product.findById(inputSearchId)
-        //             .then(row =>{
-        //                 // res.render(......)
-        //             })  
-        //             .catch(err =>{
-        //                 // res.send(err)
-        //             })
-        // }
+            Product.findById(inputSearchId)
+                    .then(row =>{
+                        res.render('products-edit', {product: row});
+                        // res.send(row);
+                    })  
+                    .catch(err =>{
+                        // res.send(err)
+                    })
+        }
 }
 
 // console.log(ProductController.findAllProduct())

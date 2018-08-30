@@ -1,0 +1,16 @@
+<%- include('./header') -%>
+
+<div class="container" style="padding-top: 100px">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 style="color: red">Error</h2>
+      <ul>
+        <% errors.forEach(error => { %>
+        <li><%= error.message%></li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%- include('./footer') -%>

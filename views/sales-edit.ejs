@@ -5,12 +5,15 @@
   <!-- INPUT FORM -->
   <div class="row">
     <div class="col-lg-12">
-      <form action="/sales/edit" method="POST">
+      <form action="/sales/edit/<%= sales.id %>" method="POST">
         <p><strong>Sales Name</strong></p>
-        <p><input type="text" name="salesName" class="form-control" value="ivan"></p>
+        <p><input type="text" name="salesName" class="form-control" value="<%= sales.salesName %>"></p>
 
         <p><strong>Email</strong></p>
-        <p><input type="text" name="email" class="form-control" value="ivansu.webmail@gmail.com"></p>
+        <p><input type="text" name="email" class="form-control" value="<%= sales.email %>"></p>
+
+        <p><strong>Birthday</strong></p>
+        <p><input type="text" name="birthday" class="form-control" value="<%= sales.birthday %>"></p>
 
         <p>
           <button type="submit" class="btn btn-primary">Edit Sales</button>

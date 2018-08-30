@@ -5,12 +5,12 @@
   <!-- INPUT FORM -->
   <div class="row">
     <div class="col-lg-12">
-      <form action="/products/edit" method="POST">
+      <form action="/products/edit/<%= product.id %>" method="POST">
         <p><strong>Product Name</strong></p>
-        <p><input type="text" name="productName" class="form-control" value="indomie"></p>
+        <p><input type="text" name="productName" class="form-control" value="<%= product.productName %>"></p>
 
         <p><strong>Product Price</strong></p>
-        <p><input type="text" name="price" class="form-control" value="indomilk"></p>
+        <p><input type="text" name="price" class="form-control" value="<%= product.price %>"></p>
 
         <p>
           <button type="submit" class="btn btn-primary">Edit Product</button>

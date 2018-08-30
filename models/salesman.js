@@ -2,35 +2,35 @@
 module.exports = (sequelize, DataTypes) => {
   const Op =require('sequelize').Op
 
-  const ConvertDateHelper = require('../helpers/ConvertDateHelper')
+  // const ConvertDateHelper = require('../helpers/ConvertDateHelper')
 
   const Salesman = sequelize.define('Salesman', {
     salesName: DataTypes.STRING,
     birthday: {
-      type : DataTypes.STRING, 
-      validate :{
-        isFormat : function(value,next){
-              let checkStr = value;
-              if(checkStr[2] && checkStr[5]){
-                  next()
-              }else {
-                  next('Format birthday harus DD-MM-YYYY')
-              }
-        },
-        isNumber : function(value,next){
-              let checkArr = value.split('-')
+      type : DataTypes.STRING
+      // validate :{
+      //   isFormat : function(value,next){
+      //         let checkStr = value;
+      //         if(checkStr[2] && checkStr[5]){
+      //             next()
+      //         }else {
+      //             next('Format birthday harus DD-MM-YYYY')
+      //         }
+      //   },
+      //   isNumber : function(value,next){
+      //         let checkArr = value.split('-')
 
-              let str = checkArr[0]+checkArr[1]+checkArr[2];
+      //         let str = checkArr[0]+checkArr[1]+checkArr[2];
 
-              let regex = new RegExp(/^\d+$/)
+      //         let regex = new RegExp(/^\d+$/)
 
-              if(regex.test(str)){
-                    next()
-              }else{
-                    next('Birthday input harus berupa angka')
-              }
-        }
-      }
+      //         if(regex.test(str)){
+      //               next()
+      //         }else{
+      //               next('Birthday input harus berupa angka')
+      //         }
+      //   }
+      // }
     },
     email: {
       type : DataTypes.STRING,
@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, { hooks :{
         beforeCreate : () => {
-            this.birthday = ConvertDateHelper(this.birthday);
+            // this.birthday = ConvertDateHelper(this.birthday);
             this.createdAt = new Date();
             this.updatedAt = new Date();
         }

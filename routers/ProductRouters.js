@@ -20,17 +20,25 @@ router.post('/',(req,res)=>{
 
 router.get('/edit/:id',(req,res)=>{
     //----------> siapkan form terpisah untuk edit data
-    res.send('ok')
+    let id = req.params.id;
+    ProductController.findByIdProduct(req, res, id);
 })
 
 router.post('/edit/:id',(req,res)=>{
     //------------> siapkan form terpisah untuk edit data
-    res.send('ok')
+    // res.send([req.params.id, req.body]);
+    let obj = {
+        productName: req.body.productName,
+        price: req.body.price
+    }
+    ProductController.updateProduct(req, res, obj, parseInt(req.params.id));
 })
 
 router.get('/delete/:id',(req,res)=>{
     //----------> siapkan form terpisah untuk delete data
-    res.send('ok')
+    let id = parseInt(req.params.id);
+    ProductController.deleteProduct(req, res, id);
+    // res.send();
 })
 
 module.exports = router;

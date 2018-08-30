@@ -9,7 +9,7 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form action="/sales/add" method="POST">
+          <form action="/sales" method="POST">
 
           <div class="modal-header">
             Add Sales Data
@@ -20,10 +20,13 @@
     
             <p><strong>Email</strong></p>
             <p><input type="text" name="email" class="form-control" placeholder="Enter sales email"></p>
+
+            <p><strong>Birthday</strong></p>
+            <p><input type="text" name="birthday" class="form-control" placeholder="YYYY-MM-DD"></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Sales</button>
+            <button type="submit" class="btn btn-primary">Add Sales</button>
           </div>
 
           </form>
@@ -39,23 +42,23 @@
           <th>No.</th>
           <th>Sales Name</th>
           <th>Email</th>
+          <th>Birthday</th>
           <th style="width: 15%"></th>
         </thead>
         <tbody>
+          <% let i = 1; %>
+          <% salesData.forEach(sales => { %>
           <tr>
-            <td>1</td>
-            <td>Ivan</td>
-            <td>ivansu.webmail@gmail.com</td>
+            <td><%= i++ %></td>
+            <td><%= sales.salesName %></td>
+            <td><%= sales.email %></td>
+            <td><%= sales.birthday %></td>
             <td>
-              <a href="/sales/edit/" class="btn btn-info"><span class="fa fa-edit"></span></a>
-              <a href="/sales/delete/" class="btn btn-danger"><span class="fa fa-trash"></span></a>
+              <a href="/sales/edit/<%= sales.id %>" class="btn btn-info"><span class="fa fa-edit"></span></a>
+              <a href="/sales/delete/<%= sales.id %>" class="btn btn-danger"><span class="fa fa-trash"></span></a>
             </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Efrat</td>
-            <td>efrat@gmail.com</td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
