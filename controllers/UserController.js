@@ -7,7 +7,7 @@ class UserController {
 
     static insertUser(req,res,objCreate){
         let obj = objCreate
-        User.insert({username : obj['username'], password : obj['password'] })
+        User.create({username : obj['username'], password : obj['password'] })
                 .then(row =>{
                     // res.render(......)
                 })  

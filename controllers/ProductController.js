@@ -7,7 +7,7 @@ class ProductController{
 
         static insertProduct(req,res,objCreate){
             let obj = objCreate
-            Product.insert({productName : obj['productName'], price : obj['price'] })
+            Product.create({productName : obj['productName'], price : obj['price'] })
                     .then(row =>{
                         // res.render(......)
                     })  

@@ -7,7 +7,7 @@ class SalesController {
 
     static insertSales(req,res,objCreate){
         let obj = objCreate
-        Salesman.insert({salesName : obj['salesName'], birthday : obj['birthday'],
+        Salesman.create({salesName : obj['salesName'], birthday : obj['birthday'],
                        email : obj['email']  })
                 .then(row =>{
                     // res.render(......)

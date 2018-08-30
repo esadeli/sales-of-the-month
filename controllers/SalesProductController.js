@@ -7,7 +7,7 @@ class SalesProductController {
     
     static insertSalesProduct(req,res,objCreate){
         let obj = objCreate
-        SalesProduct.insert({salesId : obj['salesId'], productId : obj['productId'] ,
+        SalesProduct.create({salesId : obj['salesId'], productId : obj['productId'] ,
                             quantity : obj['quantity'] , amount : obj['amount']})
                 .then(row =>{
                     // res.render(......)
