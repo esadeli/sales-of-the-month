@@ -42,20 +42,18 @@
           <th style="width: 15%"></th>
         </thead>
         <tbody>
+          <% let i = 1; %>
+          <% rows.forEach(row => { %>
           <tr>
-            <td>1</td>
-            <td>Indomilk</td>
-            <td>30000</td>
+            <td><%= i++ %></td>
+            <td><%= row.productName %></td>
+            <td><%= row.price %></td>
             <td>
               <a href="/products/edit/" class="btn btn-info"><span class="fa fa-edit"></span></a>
               <a href="/products/delete/" class="btn btn-danger"><span class="fa fa-trash"></span></a>
             </td>
           </tr>
-          <tr>
-            <td>2</td>
-            <td>Indomie</td>
-            <td>15000</td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
