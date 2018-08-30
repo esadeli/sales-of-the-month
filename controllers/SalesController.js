@@ -1,13 +1,13 @@
 'use strict'
 
 const Models = require('../models');
-const Sales = Models.Sales
+const Salesman = Models.Salesman
 
 class SalesController {
 
     static insertSales(req,res,objCreate){
         let obj = objCreate
-        Sales.insert({salesName : obj['salesName'], birthday : obj['birthday'],
+        Salesman.insert({salesName : obj['salesName'], birthday : obj['birthday'],
                        email : obj['email']  })
                 .then(row =>{
                     // res.render(......)
@@ -22,8 +22,8 @@ class SalesController {
         let inputChangeId = changeId;
         let obj = objUpdate;
 
-        Sales.update({salesName : obj['salesName'], birthday : obj['birthday'], 
-                    email : obj['email'], updatedAt = new Date()},{where : {id : inputChangeId}})
+        Salesman.update({salesName : obj['salesName'], birthday : obj['birthday'], 
+                    email : obj['email'], updatedAt : new Date()},{where : {id : inputChangeId}})
 
                 .then(row =>{
                     // res.render(......)
@@ -36,7 +36,7 @@ class SalesController {
 
     static deleteSales(req,res,deleteId){
         let inputDeleteId = deleteId;
-        Sales.destroy({where : {id : inputDeleteId}})
+        Salesman.destroy({where : {id : inputDeleteId}})
             .then(row =>{
                 // res.redirect(......)
             })  
@@ -46,10 +46,11 @@ class SalesController {
     }
 
     static findAllSales(req,res){
-        Sales.findAll({
-            order : ['id','DESC']})
+        Salesman.findAll( { order : [['id','DESC']]})
             .then(rows =>{
                 // res.render(......)
+                // console.log(rows)
+                res.send(rows)
             })  
             .catch(err =>{
                 // res.send(err)
@@ -60,7 +61,7 @@ class SalesController {
 
         let inputSearchId = searchId;
 
-        Sales.findById(inputSearchId)
+        Salesman.findById(inputSearchId)
                 .then(row =>{
                     // res.render(......)
                 })  
@@ -70,5 +71,7 @@ class SalesController {
     }
 
 }
+
+console.log(SalesController.findAllSales())
 
 module.exports = SalesController
