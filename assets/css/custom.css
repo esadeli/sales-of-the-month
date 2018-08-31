@@ -19,18 +19,25 @@
   color: #fdcb6e;
 }
 
-#rank-1 {
-  font-size: 2em;
+#rank-1 a {
+  font-size: 1.2em;
+  color: #000000;
 }
 
-#rank-2 {
-  font-size: 1.5em;
+#rank-2 a {
+  font-size: 0.9em;
   color: #595959;
 }
 
-#rank-3 {
-  font-size: 1em;
+#rank-3 a {
+  font-size: 0.7em;
   color: #999999;
+}
+
+#rank-1 a:hover, 
+#rank-2 a:hover, 
+#rank-3 a:hover {
+  text-decoration: none;
 }
 
 #footer {
