@@ -44,13 +44,9 @@ class ProductController{
                     Product.destroy({where : {id : inputDeleteId}})
                         .then(row =>{
                             // res.redirect(......)
+                            res.redirect('/products');
                         })
                 })
-                .catch(err =>{
-
-                    // res.redirect(......)
-                    res.redirect('/products');
-                })  
                 .catch(err =>{
                     // res.send(err)
                     res.render('error', {error: err});

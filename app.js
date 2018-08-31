@@ -24,8 +24,7 @@ app.use(session({
 
 app.use('/sales',IsLogin,SalesRouters);
 app.use('/products',IsLogin, ProductRouters);
-app.use('/dashboard',IsLogin, SalesProductRouters);
-
+app.use('/dashboard', SalesProductRouters);
 
 app.get('/',(req,res)=>{
     //-------> siapkan index.ejs
