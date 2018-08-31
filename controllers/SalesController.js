@@ -46,12 +46,9 @@ class SalesController {
                 Salesman.destroy({where : {id : inputDeleteId}})
                 .then(row =>{
                     // res.redirect(......)
+                    res.redirect('/sales');
                 })  
             })
-            .catch(err =>{
-                    // res.send(err)
-                res.redirect('/sales');
-            })  
             .catch(err =>{
                 res.render('error', {error: err});
             })
@@ -73,6 +70,8 @@ class SalesController {
     static findByIdSales(req,res,searchId){
 
         let inputSearchId = searchId;
+
+        console.log(inputSearchId, '<====================');
 
         Salesman.findById(inputSearchId)
                 .then(row =>{
