@@ -6,7 +6,7 @@ function HashPassword(str) {
     const secret = 'salesofthemonth'
 
     const hash = Crypto
-                    .createHmac('SHA256',secret)
+                    .createHmac('sha256',secret)
                     .update(str)
                     .digest('hex');
 
@@ -14,5 +14,3 @@ function HashPassword(str) {
 }
 
 module.exports = HashPassword
-
-console.log(HashPassword('Makan'))

@@ -10,11 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         len :{
           args : [6,100],
           msg : 'Password harus minimal 6 karakter'
-        },
-        isAlphanumeric : {
-          arg : true,
-          msg : 'Password harus alphanumerik'
-        } 
+        }
       }
     },
     role: {
@@ -22,8 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue : 'Admin'
      }
   }, { hooks : {
-    beforeCreate : ()=>{
-        this.password = HashPassword(this.password);
+    
+    beforeCreate : (user)=>{
+        let hash = HashPassword(user.password);
+        user.password = hash;
         this.createdAt = new Date();
         this.updatedAt = new Date();
     }
