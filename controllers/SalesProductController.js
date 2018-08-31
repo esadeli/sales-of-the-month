@@ -26,16 +26,13 @@ class SalesProductController {
             let keySorted = Object.keys(filtered).sort(function(a, b) {
                 return filtered[b].totalAmount - filtered[a].totalAmount;
             });
-
             let resultsOfName = [];
             let resultsOfAmount = [];
-
-            console.log(filtered);
 
 
             keySorted.forEach((key) => {
                 resultsOfName.push(filtered[key].salesName);
-                resultsOfAmount.push(convertToRupiah(filtered[key].totalAmount));
+                resultsOfAmount.push(filtered[key].totalAmount);
             });
 
             res.render('sales-of-the-month', {
