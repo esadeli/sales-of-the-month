@@ -8,6 +8,7 @@
   <div class="row">
     <div class="col-lg-3">
       <select name="productData" class="form-control">
+        <option value="">- Select -</option>
         <% products.forEach(product => { %>
         <option value="<%= `${product.id}|${product.price}` %>"><%= product.productName %></option>
         <% }) %>
@@ -15,6 +16,7 @@
     </div>
     <div class="col-lg-3">
       <select name="salesId" class="form-control">
+          <option value="">- Select -</option>
           <% sales.forEach(people => { %>
             <option value="<%= people.id %>"><%= people.salesName %></option>
             <% }) %>

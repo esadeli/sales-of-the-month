@@ -26,7 +26,8 @@ class SalesController {
         let inputChangeId = changeId;
         let obj = objUpdate;
 
-        Salesman.update({salesName : obj['salesName'], birthday : obj['birthday'], 
+        Salesman.update({
+            id:inputChangeId, salesName : obj['salesName'], birthday : obj['birthday'], 
                     email : obj['email'], updatedAt : new Date()},{where : {id : inputChangeId}})
 
                 .then(row =>{
@@ -46,19 +47,15 @@ class SalesController {
                 Salesman.destroy({where : {id : inputDeleteId}})
                 .then(row =>{
                     // res.redirect(......)
+                    res.redirect('/sales');
                 })  
             })
-            .catch(err =>{
-                    // res.send(err)
-                res.redirect('/sales');
-            })  
             .catch(err =>{
                 res.render('error', {error: err});
             })
     }
 
     static findAllSales(req,res){
-        console.log('MASUkkkkk')
         Salesman.findAll( { order : [['id','DESC']]})
             .then(rows =>{
                 res.render('sales-data', {salesData: rows});
@@ -71,7 +68,6 @@ class SalesController {
     }
 
     static findByIdSales(req,res,searchId){
-
         let inputSearchId = searchId;
 
         Salesman.findById(inputSearchId)

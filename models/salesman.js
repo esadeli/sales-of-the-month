@@ -40,11 +40,16 @@ module.exports = (sequelize, DataTypes) => {
           msg : 'Input email harus berupa email'
         },
         isExist : function(value,next){
-
-          Salesman.findAll({where : {
-            email : value,
-            id : {[Op.ne] : this.id}} }
-          ).then(rows =>{
+          console.log(this.id, '<===========================');
+          Salesman.findAll({
+            where: {
+              email: value,
+              id: {
+                [Op.ne]: this.id
+              }
+            }
+          })
+            .then(rows =>{
                 if(rows.length===0){
                     next()
                 }else{  
