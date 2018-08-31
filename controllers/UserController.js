@@ -30,7 +30,7 @@ class UserController {
         // res.send('OK')
         User.findOne({where : { username : obj['username'], password : hashPassword}})
                 .then(row =>{
-                    console.log('TESTTT', row)
+                    // console.log('TESTTT', row)
                     if (row) {
                          req.session.admin = {
                             name : req.body.username,

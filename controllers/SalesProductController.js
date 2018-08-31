@@ -36,7 +36,7 @@ class SalesProductController {
                 resultsOfAmount.push(filtered[key].totalAmount);
             });
 
-            console.log(filtered);
+            // console.log(filtered);
 
             res.render('sales-of-the-month', {
                 objs: resultsOfObj, names: resultsOfName, amounts: resultsOfAmount, dateFormat

@@ -56,10 +56,6 @@ app.get('/logout',(req,res)=>{
     res.redirect('/login');
 })
 
-// app.get('/dashboard',IsLogin,(req,res,next)=>{
-//     res.send(`aman`);
-// })
-
 app.listen(3000, ()=>{
     console.log('you are listening to Port 3000')
 })
