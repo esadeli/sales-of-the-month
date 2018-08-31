@@ -17,17 +17,15 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.static('assets'));
 
-app.use('/sales',SalesRouters);
-app.use('/products',ProductRouters);
-app.use('/dashboard', SalesProductRouters);
-
-app.use('/sales', IsLogin, SalesRouters);
-app.use('/products',IsLogin,ProductRouters);
-
 app.use(session({
     secret : 'keyboard-cat', // bebas
     resave : false
 }))
+
+app.use('/sales',IsLogin,SalesRouters);
+app.use('/products',IsLogin, ProductRouters);
+app.use('/dashboard',IsLogin, SalesProductRouters);
+
 
 app.get('/',(req,res)=>{
     //-------> siapkan index.ejs
@@ -36,38 +34,29 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/register',(req,res)=>{
-    UserController.insertUser(req,res,req.body['username'],req.body['password'])
+    res.render('register');
+})
+
+app.post('/register',(req,res)=>{
+    UserController.insertUser(req,res,req.body);
+
 })
 
 app.get('/login',(req,res)=>{
-    // UserController.findOneUser(req,res,req.body['username'],req.body['password'])
     res.render('testing-login');
 })
 
 app.post('/login',(req,res)=>{
-    UserController.findOneUser(req, res)
-   
-    // res.redirect('/dashboard')
-    //res.send(req.session.admin)
+    // console.log('TESTTTT', req.session)
+    UserController.findOneUser(req, res)   
 })
 
-app.get('/dashboard',IsLogin,(req,res,next)=>{
-    res.send(`aman`);
+app.get('/logout',(req,res)=>{
+    req.session.admin = null;
+    res.redirect('/login');
 })
 
 app.listen(3000, ()=>{
     console.log('you are listening to Port 3000')
 })
 
-// function isLogin(req,res,next) {
-//     console.log(req.session.admin)
-//     // const isLogin = false;
-//     const user = 'DADADA'
-//     const password = 'test'
-//     const role = 'admin'
-//     if(req.session.admin.admin.name === user && req.session.admin.password ===password){
-//         next()
-//     }else{
-//         next(`error`)
-//     }
-// }

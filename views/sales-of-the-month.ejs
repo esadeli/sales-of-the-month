@@ -6,8 +6,8 @@
       <h2 class="text-center"><%= dateFormat() %></h2>
       <span class="fa fa-star" id="star"></span>
       <% let i = 1; %>
-      <% names.slice(0, 3).forEach((name) => { %>
-        <h3 class="text-center" id="rank-<%= i++ %>"><strong><%= name %></strong></h3>
+      <% objs.slice(0, 3).forEach((obj) => { %>
+        <h3 class="text-center" id="rank-<%= i++ %>"><strong><a href="/sales/detail/<%= obj.salesId %>"><%= obj.salesName %></a></strong></h3>
       <% }) %>
     </div>
     <div class="col-lg-6">

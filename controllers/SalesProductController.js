@@ -28,15 +28,18 @@ class SalesProductController {
             });
             let resultsOfName = [];
             let resultsOfAmount = [];
-
+            let resultsOfObj = [];
 
             keySorted.forEach((key) => {
+                resultsOfObj.push(filtered[key]);
                 resultsOfName.push(filtered[key].salesName);
                 resultsOfAmount.push(filtered[key].totalAmount);
             });
 
+            // console.log(filtered);
+
             res.render('sales-of-the-month', {
-                names: resultsOfName, amounts: resultsOfAmount, dateFormat
+                objs: resultsOfObj, names: resultsOfName, amounts: resultsOfAmount, dateFormat
             });
         })
         .catch(err => {
