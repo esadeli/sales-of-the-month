@@ -5,14 +5,38 @@ const Salesman = Models.Salesman
 const Product = Models.Product;
 const SalesProduct = Models.SalesProduct;
 const dateFormat = require('../helpers/dateFormat');
+const convertToRupiah = require('../helpers/convertToRupiah');
 
 class SalesProductController {
     
     static viewSalesOfTheMonth(req, res) {
-        SalesProduct.findAll()
+        SalesProduct.findAll({
+            include: [Salesman]
+        })
         .then(results => {
-            results.forEach(element => {
-                
+            let filtered = results.reduce((acc, obj, i) => {
+                let key = obj.salesId;
+                if(!acc[key]) {
+                  acc[key] = {salesId: obj.salesId, salesName: obj.Salesman.salesName, totalAmount: 0};
+                }
+                acc[key].totalAmount += obj.amount;
+                return acc;
+              }, {});
+
+            let keySorted = Object.keys(filtered).sort(function(a, b) {
+                return filtered[b].totalAmount - filtered[a].totalAmount;
+            });
+            let resultsOfName = [];
+            let resultsOfAmount = [];
+
+
+            keySorted.forEach((key) => {
+                resultsOfName.push(filtered[key].salesName);
+                resultsOfAmount.push(filtered[key].totalAmount);
+            });
+
+            res.render('sales-of-the-month', {
+                names: resultsOfName, amounts: resultsOfAmount, dateFormat
             });
         })
         .catch(err => {
